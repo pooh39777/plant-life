@@ -1,17 +1,10 @@
 library(tidyverse)
-library(googlesheets4)
 library(googledrive)
 library(pdftools)
-library(readxl)
 
 ## import csv from google form (manual)
 note_01 <- read_csv("note_01_20231211.csv")
 note_02 <- read_csv("note_02_20231218.csv")
-
-## import csv from google form (api)
-#gs4_deauth()
-#sheet <- gs4_get("https://docs.google.com/spreadsheets/d/...")
-#note_01 <- read_sheet(sheet)
 
 ## random select students
 #random_note_01 <- slice_sample(note_01, n = 5)
