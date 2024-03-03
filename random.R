@@ -15,6 +15,7 @@ note_08 <- read_csv("note_08_20240205.csv")
 note_09 <- read_csv("note_09_20240212.csv")
 note_10 <- read_csv("note_10_20240218.csv")
 ืnote_11 <- read_csv("note_11_20240226.csv")
+note_12 <- read_csv("note_12_20240302.csv")
 
 ## random select students
 #random_note_01 <- slice_sample(note_01, n = 5)
@@ -41,6 +42,8 @@ random_note_09
 random_note_10
 #random_note_11 <- slice_sample(note_11, n = 5)
 random_note_11
+#random_note_12 <- slice_sample(note_12, n = 5)
+random_note_12
 
 ## save random results
 write_csv(random_note_01, "note_01_random.csv")
@@ -55,6 +58,7 @@ write_csv(random_note_08, "note_08_random.csv")
 write_csv(random_note_09, "note_09_random.csv")
 write_csv(random_note_10, "note_10_random.csv")
 write_csv(random_note_11, "note_11_random.csv")
+write_csv(random_note_12, "note_12_random.csv")
 
 ## set google drive authen
 #drive_auth_configure(path = "xxx.json") #OAuth 2.0 Client IDs
@@ -62,24 +66,24 @@ write_csv(random_note_11, "note_11_random.csv")
 googledrive::drive_auth()
 
 ## set url to download files
-file_id <- random_note_11[,5]
+file_id <- random_note_12[,5]
 colnames(file_id) <- c("url")
 file_id$url <- gsub("https://drive.google.com/open\\?id=", "", file_id$url)
 
 ## create folder to download pdf files
-dir.create("./note_11_random")
-dir.create("./note_11_random/pdf")
+dir.create("./note_12_random")
+dir.create("./note_12_random/pdf")
 
 ## download files
 for (i in 1:length(file_id$url)) {
-  drive_download(file = as_id(file_id$url[i]), path = paste0("./note_11_random/pdf/","note_11_random-",i,".pdf"), overwrite = TRUE)
+  drive_download(file = as_id(file_id$url[i]), path = paste0("./note_12_random/pdf/","note_12_random-",i,".pdf"), overwrite = TRUE)
 }
 
 ## create folder to convert files
-dir.create("./note_11_random/jpg")
+dir.create("./note_12_random/jpg")
 
-pdf_file <- paste0("./note_11_random/pdf/note_11_random-", seq(1,length(file_id$url),1),".pdf")
-jpg_file <- paste0("./note_11_random/jpg/note_11_random-", seq(1,length(file_id$url),1),".jpg")
+pdf_file <- paste0("./note_12_random/pdf/note_12_random-", seq(1,length(file_id$url),1),".pdf")
+jpg_file <- paste0("./note_12_random/jpg/note_12_random-", seq(1,length(file_id$url),1),".jpg")
 
 ## convert pdf to jpg
 for (i in 1:length(pdf_file)) {
