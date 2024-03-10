@@ -17,6 +17,7 @@ note_10 <- read_csv("note_10_20240218.csv")
 ืnote_11 <- read_csv("note_11_20240226.csv")
 note_12 <- read_csv("note_12_20240302.csv")
 note_13 <- read_csv("note_13_20240310.csv")
+note_13 <- read_csv("note_13_20240310.csv")
 
 ## random select students
 #random_note_01 <- slice_sample(note_01, n = 5)
